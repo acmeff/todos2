@@ -1,23 +1,7 @@
 import merge from 'lodash/merge';
 import {RECEIVE_TODO, RECEIVE_TODOS, REMOVE_TODO} from '../actions/todo_actions.js';
 
-
-const initialState = {
-  1: {
-    id: 1,
-    title: "wash car",
-    body: "with soap",
-    done: false
-  },
-  11: {
-    id: 11,
-    title: "wash dog",
-    body: "with shampoo",
-    done: true
-  },
-};
-
-const todosReducer = (state = initialState, action) => {
+const todosReducer = (state = {}, action) => {
   // Object.freeze(state);
   switch(action.type){
     case RECEIVE_TODO:

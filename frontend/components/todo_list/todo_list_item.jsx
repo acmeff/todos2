@@ -18,12 +18,12 @@ class TodoListItem extends React.Component {
 
   handleDelete(evernt) {
     evernt.preventDefault();
-    this.props.removeTodo(this.props.todo);
+    this.props.deleteTodo(this.props.todo);
   }
 
   updateTodo(event) {
     event.preventDefault();
-    this.props.receiveTodo({
+    this.props.patchTodo({
           id: this.props.todo.id,
           body: this.props.todo.body,
           title: this.props.todo.title,

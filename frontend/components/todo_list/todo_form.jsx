@@ -5,7 +5,6 @@ class TodoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: uniqueId(),
       title: "",
       body: "",
       done: false
@@ -32,13 +31,17 @@ class TodoForm extends React.Component {
 
   buttonPresser (event) {
     event.preventDefault();
-    this.props.receiveTodo(this.state);
-    this.setState({id: uniqueId(), title: "", body: ""});
+    this.props.createTodo(this.state).then(this.setState({title: "", body: ""}));
   }
 
   render() {
     return(
       <form>
+        <ul>
+          {
+            this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)
+          }
+        </ul>
         <input onChange={this.timesAChangin} type="text" name="title" value={this.state.title}></input>
         <input onChange={this.timesAChangin} type="text" name="body" value={this.state.body}></input>
 
